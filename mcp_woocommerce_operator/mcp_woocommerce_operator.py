@@ -595,8 +595,9 @@ class MCPWooCommerceOperator:
             # Add payment method
             if arguments.get("payment_method"):
                 order_data["payment_method"] = arguments["payment_method"]
-                order_data["payment_method_title"] = arguments["payment_method"].replace(
-                    "_", " ").title()
+                order_data["payment_method_title"] = (
+                    arguments["payment_method"].replace("_", " ").title()
+                )
 
             # Set paid status
             if arguments.get("set_paid"):
