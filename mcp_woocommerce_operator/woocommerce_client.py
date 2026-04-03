@@ -376,7 +376,7 @@ class WooCommerceClient:
         customers = result.get("customers", [])
         return customers[0] if customers else None
 
-    def create_customer(self, customer_data: Dict[str, Any]) -> Dict[str, Any]:
+    def woo_create_customer(self, customer_data: Dict[str, Any]) -> Dict[str, Any]:
         """Create a new customer.
 
         Args:

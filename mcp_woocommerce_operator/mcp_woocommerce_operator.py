@@ -258,7 +258,7 @@ MCP_CONFIGURATION = {
             "annotations": None,
         },
         {
-            "name": "create_customer",
+            "name": "woo_create_customer",
             "description": "Create a new WooCommerce customer account. Generates a username automatically if not provided. Optionally set billing and shipping addresses. Returns customer ID and details.",
             "inputSchema": {
                 "type": "object",
@@ -393,10 +393,10 @@ MCP_CONFIGURATION = {
         },
         {
             "type": "tool",
-            "name": "create_customer",
+            "name": "woo_create_customer",
             "module_name": "mcp_woocommerce_operator",
             "class_name": "MCPWooCommerceOperator",
-            "function_name": "create_customer",
+            "function_name": "woo_create_customer",
             "return_type": "text",
         },
         {
@@ -732,10 +732,10 @@ class MCPWooCommerceOperator:
 
     # ============== Customers ==============
 
-    def create_customer(self, **arguments: Dict[str, Any]) -> Dict[str, Any]:
+    def woo_create_customer(self, **arguments: Dict[str, Any]) -> Dict[str, Any]:
         """Create a new customer."""
         try:
-            self.logger.info(f"create_customer called with arguments: {arguments}")
+            self.logger.info(f"woo_create_customer called with arguments: {arguments}")
 
             email = arguments.get("email")
             first_name = arguments.get("first_name")
@@ -776,7 +776,7 @@ class MCPWooCommerceOperator:
                 customer_data["shipping"] = arguments["shipping"]
 
             client = self._get_client()
-            result = client.create_customer(customer_data)
+            result = client.woo_create_customer(customer_data)
 
             return humps.decamelize(result)
 
